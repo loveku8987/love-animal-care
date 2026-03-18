@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Love Animal Care | Smart Pashu Seva</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&family=Hind:wght@500;700&display=swap" rel="stylesheet">
+
+<style>
+:root {
+    --primary: #064e3b; 
+    --accent: #fbbf24;  
+    --danger: #ef4444;
+    --white: #ffffff;
+}
+
+body { font-family: 'Poppins', sans-serif; margin: 0; background: #f8fafc; color: #1e293b; scroll-behavior: smooth; }
+
+/* Top Weather Alert Bar */
+.alert-bar {
+    background: var(--accent); color: var(--primary);
+    padding: 8px; text-align: center; font-weight: 700; font-size: 0.9rem;
+}
+
+/* Modern Nav with 3-Dots Style */
+nav { 
+    position: sticky; top: 0; background: var(--primary); 
+    padding: 15px 20px; display: flex; justify-content: space-between; align-items: center;
+    z-index: 1000; box-shadow: 0 4px 15px rgba(0,0,0,0.2); 
+}
+.menu-dots { cursor: pointer; display: flex; flex-direction: column; gap: 4px; padding: 5px; }
+.menu-dots span { width: 6px; height: 6px; background: var(--accent); border-radius: 50%; }
+
+.nav-links { 
+    display: none; position: absolute; top: 60px; right: 20px; 
+    background: white; border-radius: 15px; box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    flex-direction: column; padding: 10px; width: 200px;
+}
+.nav-links.active { display: flex; }
+.nav-links a { color: var(--primary); text-decoration: none; padding: 12px; font-weight: 600; border-bottom: 1px solid #eee; }
+
+/* Emergency Float Button */
+.sos-btn {
+    position: fixed; bottom: 100px; right: 20px; background: var(--danger);
+    color: white; padding: 15px; border-radius: 50px; font-weight: 800;
+    text-decoration: none; z-index: 2000; box-shadow: 0 5px 15px rgba(239, 68, 68, 0.4);
+    animation: shake 2s infinite;
+}
+@keyframes shake { 0%, 100% {transform: rotate(0);} 10%, 30%, 50% {transform: rotate(-10deg);} 20%, 40%, 60% {transform: rotate(10deg);} }
+
+/* Section Design */
+section { padding: 50px 8%; }
+.card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; }
+.pashu-card { background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.05); transition: 0.3s; }
+.pashu-card:hover { transform: scale(1.03); }
+.pashu-card img { width: 100%; height: 180px; object-fit: cover; cursor: pointer; }
+
+/* Compact Doctor Section */
+.doc-box { 
+    max-width: 800px; margin: 0 auto; background: var(--white); 
+    display: flex; flex-wrap: wrap; border-radius: 25px; overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1); border: 1px solid #ddd;
+}
+.doc-img { flex: 1 1 280px; height: 300px; object-fit: cover; }
+.doc-info { flex: 1 1 350px; padding: 30px; background: var(--primary); color: white; text-align: center; }
+
+/* Appointment Form */
+.book-card { background: white; padding: 30px; border-radius: 25px; box-shadow: 0 10px 20px rgba(0,0,0,0.05); max-width: 500px; margin: 0 auto; }
+input, textarea { width: 100%; padding: 12px; margin: 10px 0; border: 1px solid #ccc; border-radius: 10px; box-sizing: border-box; }
+.btn-send { background: #25d366; color: white; border: none; padding: 15px; width: 100%; border-radius: 10px; font-weight: 800; cursor: pointer; }
+
+footer { background: #022c22; color: white; padding: 40px; text-align: center; }
+
+@media (max-width: 768px) { .doc-box { flex-direction: column; } }
+</style>
+</head>
+<body>
+
+<div class="alert-bar">📢 Mausam Alert: Garmi badh rahi hai, pashuon ko thandak mein rakhein! 🐄</div>
+
+<nav>
+    <a href="#" style="color:var(--accent); text-decoration:none; font-weight:800; font-size:1.2rem;">🐾 Love Animal Care</a>
+    <div class="menu-dots" onclick="toggleMenu()">
+        <span></span><span></span><span></span>
+    </div>
+    <div class="nav-links" id="menuList">
+        <a href="#tips">Pashu Tips</a>
+        <a href="#doctor">Doctor</a>
+        <a href="#booking">Appointment</a>
+        <a href="#footer">Contact</a>
+    </div>
+</nav>
+
+<a href="tel:+918987324032" class="sos-btn">🚨 EMERGENCY CALL</a>
+
+<header style="text-align:center; padding:50px 20px; background:var(--primary); color:white;">
+    <img src="images/logo.png" style="width:80px; border-radius:50%; border:3px solid var(--accent);">
+    <h1 style="margin:10px 0 0;">Love Animal Care</h1>
+    <p style="font-family:'Hind';">Aapka vishwas, hamari pehchan</p>
+</header>
+
+<section id="tips">
+    <h2 style="text-align:center; color:var(--primary);">Animal Tips / पशु सुझाव</h2>
+    <div class="card-grid">
+        <div class="pashu-card"><img src="cow.jpg"><h4>Cow / गाय</h4></div>
+        <div class="pashu-card"><img src="buffalo.jpg"><h4>buffalo / भैंसें</h4></div>
+        <div class="pashu-card"><img src="goat.jpg"><h4>Goat / बकरी</h4></div>
+        <div class="pashu-card"><img src="dog.jpg"><h4>Dog / कुत्ता</h4></div>
+        <div class="pashu-card"><img src="horse.jpg"><h4>Horse / घोड़ा</h4></div>
+    </div>
+</section>
+
+<section id="doctor" style="background:#f1f5f9;">
+    <div class="doc-box">
+        <img src="doctor.jpeg" class="doc-img">
+        <div class="doc-info">
+            <h2 style="margin:0;">Dr.Love kumar</h2>
+            <p style="color:var(--accent);">Veterinary Specialist</p>
+            <p>24/7 pashuon ki seva ke liye hazir hain.</p>
+            <a href="tel:+918987324032" style="display:block; background:var(--accent); color:var(--primary); padding:12px; border-radius:10px; font-weight:800; text-decoration:none;">📞 CALL DOCTOR</a>
+        </div>
+    </div>
+</section>
+
+<section id="booking">
+    <div class="book-card">
+        <h3 style="text-align:center; color:var(--primary);">Book Appointment (WhatsApp)</h3>
+        <input type="text" id="name" placeholder="Naam / नाम">
+        <input type="tel" id="phone" placeholder="Mobile / मोबाइल">
+        <textarea id="issue" placeholder="Bimari / समस्या"></textarea>
+        <button class="btn-send" onclick="bookWhatsApp()">💬 Book on WhatsApp</button>
+    </div>
+</section>
+
+<footer id="footer">
+    <div style="line-height:1.8; margin-bottom:20px;">
+        <b style="color:var(--accent);">📍 Pata / पता:</b><br>
+         Village-Bikhani bigha(near rishav engineering work shop Road onda,desna), District-nalanda, State-Bihar sharif- Pin Code-803107<br>
+        <b>📞 Phone:</b> +91-8987324032
+    </div>
+    <p>© 2026 Love Animal Care | Pashu Seva</p>
+</footer>
+
+<script>
+function toggleMenu() {
+    document.getElementById('menuList').classList.toggle('active');
+}
+
+function bookWhatsApp() {
+    let n = document.getElementById('name').value;
+    let p = document.getElementById('phone').value;
+    let i = document.getElementById('issue').value;
+    if(n && p && i) {
+        let msg = `Hello Doctor, Appointment Request:%0A*Name:* ${n}%0A*Phone:* ${p}%0A*Problem:* ${i}`;
+        window.open(`https://wa.me/91987324032?text=${msg}`, '_blank');
+    } else {
+        alert("Puri jankari bharein!");
+    }
+}
+</script>
+
+</body>
+</html>
